@@ -1,5 +1,5 @@
 import { Box, Flex, GridItem, Heading, Img, SimpleGrid, Text } from "@chakra-ui/react";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { api } from "../../services/api";
@@ -90,14 +90,7 @@ export default function Continent({ continent, mostVisitedCities }: ContinentPro
     );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-    return {
-        paths: [],
-        fallback: 'blocking'
-    }
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }: any) => {
+export const getServerSideProps: GetServerSideProps = async ({params}: any) => {
     const { name } = params;
     const continentResponse = await api.get<Continent>(`/continent/${name}`);
     const continent = continentResponse.data;
@@ -122,8 +115,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
     })
 
     return {
-      props: { continent, mostVisitedCities },
-      revalidate: 60 * 60,
+      props: { continent, mostVisitedCities }
     }
-  }
+}
   
