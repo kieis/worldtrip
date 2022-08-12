@@ -10,7 +10,7 @@ export function HomeBanner() {
                   <Text pt="20px" fontSize="20px" lineHeight="30px" color="light.info">Chegou a hora de tirar do papel a viagem que você<br/> sempre sonhou. </Text>
                 </Box>
                 <Box>
-                  <Img src="/images/AirPlane.svg" alt="Airplane"/>
+                  <Img src="/images/Airplane.svg" alt="Airplane"/>
                 </Box>
             </Flex>
           </Flex>
