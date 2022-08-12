@@ -1,5 +1,6 @@
 import { Box, Flex, GridItem, Heading, Img, SimpleGrid, Text } from "@chakra-ui/react";
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { api } from "../../services/api";
@@ -32,6 +33,9 @@ interface ContinentProps {
 export default function Continent({ continent, mostVisitedCities }: ContinentProps) {
     return(
         <>
+        <Head>
+            <title>WorldTrip - ${continent.translatedName}</title>
+        </Head>
         <Header />
             <Box backgroundImage={continent.images[1]} width="100%" height="500px" backgroundPosition="center" backgroundSize="cover">
                 <Flex flexDir="column" maxWidth="1160px" margin="0 auto" justifyContent="flex-end" height="100%">
