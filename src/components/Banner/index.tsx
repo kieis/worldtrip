@@ -4,7 +4,7 @@ export function HomeBanner() {
   const isWideVersion = useBreakpointValue({base: false, lg: true})
 
     return (
-        <Box backgroundImage='/images/home_background_banner.png' width="100%" height="335px" backgroundRepeat="no-repeat" backgroundSize="cover">
+        <Box backgroundImage='/images/home_background_banner.png' width="100%" height="335px" backgroundRepeat="no-repeat" backgroundSize="cover" backgroundPosition="center" backgroundAttachment="fixed">
           <Flex maxWidth="1160px" margin="0 auto" flexDirection="column">
             <Flex width="100%" justifyContent="space-between" pt={{base: "28px", lg:"80px"}} pl={{base: "16px", lg:"0px"}}>
                 <Box>

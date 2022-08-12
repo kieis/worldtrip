@@ -37,7 +37,7 @@ export default function Continent({ continent, mostVisitedCities }: ContinentPro
             <title>WorldTrip - {continent.translatedName}</title>
         </Head>
         <Header />
-            <Box backgroundImage={continent.images[1]} width="100%" height="500px" backgroundPosition="center" backgroundSize="cover">
+            <Box backgroundImage={continent.images[1]} width="100%" height="500px" backgroundRepeat="no-repeat" backgroundSize="cover" backgroundPosition="center" backgroundAttachment="fixed">
                 <Flex flexDir="column" maxWidth="1160px" margin="0 auto" justifyContent={{base: 'center', lg: 'flex-end'}} alignItems={{base: 'center', lg: 'flex-start'}} height="100%" paddingInline={{base: '22px', lg: '0px'}}>
                     <Heading color="light.heading" pb={{base: '0px', lg: '60px'}}>{continent.translatedName}</Heading>
                 </Flex>
@@ -64,7 +64,7 @@ export default function Continent({ continent, mostVisitedCities }: ContinentPro
             </Flex>
             <Box maxWidth="1160px" margin="0 auto" paddingInline={{base: '22px', lg: '0px'}}>
                 <Heading pb="40px">Cidades +100</Heading>
-                <SimpleGrid columns={4} gap="45px" minChildWidth={320}>
+                <SimpleGrid columns={4} gap="45px" minChildWidth="256px">
                     {
                         mostVisitedCities.map((city) => {
                             return (
