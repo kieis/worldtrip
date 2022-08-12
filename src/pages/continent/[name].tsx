@@ -1,4 +1,4 @@
-import { Box, Flex, GridItem, Heading, Img, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Flex, GridItem, Heading, Img, SimpleGrid, Text, Tooltip } from "@chakra-ui/react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { Footer } from "../../components/Footer";
@@ -54,7 +54,12 @@ export default function Continent({ continent, mostVisitedCities }: ContinentPro
                 </Flex>
                 <Flex flexDir="column" justifyContent="center" alignItems="center">
                     <Text fontSize="48px" lineHeight="72px" fontWeight="600" color="highlight">{continent.countries.count}</Text>
-                    <Text fontSize="24px" lineHeight="36px" fontWeight="600">cidades +100</Text>
+                    <Flex gap="5px">
+                        <Text fontSize="24px" lineHeight="36px" fontWeight="600">cidades +100</Text>
+                        <Tooltip hasArrow label={`Entre as 100 cidades mais visitas do mundo a ${continent.translatedName} possui ${continent.countries.count} delas.`} bg='dark.heading' color='white' padding="10px 10px">
+                            <Img src="/images/Info.svg"/>
+                        </Tooltip>
+                    </Flex>
                 </Flex>
             </Flex>
             <Box maxWidth="1160px" margin="0 auto">
