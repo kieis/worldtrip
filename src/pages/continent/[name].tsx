@@ -38,11 +38,11 @@ export default function Continent({ continent, mostVisitedCities }: ContinentPro
         </Head>
         <Header />
             <Box backgroundImage={continent.images[1]} width="100%" height="500px" backgroundPosition="center" backgroundSize="cover">
-                <Flex flexDir="column" maxWidth="1160px" margin="0 auto" justifyContent="flex-end" height="100%">
-                    <Heading color="light.heading" pb="60px">{continent.translatedName}</Heading>
+                <Flex flexDir="column" maxWidth="1160px" margin="0 auto" justifyContent={{base: 'center', lg: 'flex-end'}} alignItems={{base: 'center', lg: 'flex-start'}} height="100%" paddingInline={{base: '22px', lg: '0px'}}>
+                    <Heading color="light.heading" pb={{base: '0px', lg: '60px'}}>{continent.translatedName}</Heading>
                 </Flex>
             </Box>
-            <Flex maxWidth="1160px" margin="0 auto" paddingBlock="80px" alignItems="center" justifyContent="space-between">
+            <Flex maxWidth="1160px" margin="0 auto" paddingBlock="80px" alignItems="center" justifyContent="space-between" flexDir={{base: 'column', lg: 'row'}} paddingInline={{base: '22px', lg: '0px'}}>
                 <Text fontSize="24px" lineHeight="36px" maxWidth="600px" textAlign="justify">{continent.description}</Text>
                 <Flex flexDir="column" justifyContent="center" alignItems="center">
                     <Text fontSize="48px" lineHeight="72px" fontWeight="600" color="highlight">{continent.countries.count}</Text>
@@ -62,9 +62,9 @@ export default function Continent({ continent, mostVisitedCities }: ContinentPro
                     </Flex>
                 </Flex>
             </Flex>
-            <Box maxWidth="1160px" margin="0 auto">
+            <Box maxWidth="1160px" margin="0 auto" paddingInline={{base: '22px', lg: '0px'}}>
                 <Heading pb="40px">Cidades +100</Heading>
-                <SimpleGrid columns={4} gap="45px">
+                <SimpleGrid columns={4} gap="45px" minChildWidth={320}>
                     {
                         mostVisitedCities.map((city) => {
                             return (
