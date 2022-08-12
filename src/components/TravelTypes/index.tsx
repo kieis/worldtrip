@@ -1,4 +1,4 @@
-import { Box, Flex, Img, Text } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { TravelItem } from "./TravelItem";
 
 export function TravelTypes() {
