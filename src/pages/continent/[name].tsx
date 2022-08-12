@@ -66,9 +66,9 @@ export default function Continent({ continent, mostVisitedCities }: ContinentPro
                                         justifyContent="space-between"
                                         alignItems="center"
                                         borderBottomRadius="4px" 
-                                        borderBottom="1px solid highlight" 
-                                        borderLeft="1px solid highlight" 
-                                        borderRight="1px solid highlight" 
+                                        borderBottom="1px solid #FFBA08" 
+                                        borderLeft="1px solid #FFBA08" 
+                                        borderRight="1px solid #FFBA08" 
                                         paddingInline="24px"
                                         pt="18px"
                                         pb="25px">
