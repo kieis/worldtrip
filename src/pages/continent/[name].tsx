@@ -65,7 +65,7 @@ export default function Continent({ continent, mostVisitedCities }: ContinentPro
                             return (
                                 <GridItem key={city.name}>
                                     <Flex height="280px" flexDir="column">
-                                        <Img src={`https://source.unsplash.com/random/?${city.name},city`} height="173px" borderRadius="4px 4px 0px 0px"/>
+                                        <Img src={`https://source.unsplash.com/random/280x173/?${city.name},city`} height="173px" borderRadius="4px 4px 0px 0px"/>
                                         <Flex
                                         justifyContent="space-between"
                                         alignItems="center"
