@@ -34,7 +34,7 @@ export default function Continent({ continent, mostVisitedCities }: ContinentPro
     return(
         <>
         <Head>
-            <title>WorldTrip - ${continent.translatedName}</title>
+            <title>WorldTrip - {continent.translatedName}</title>
         </Head>
         <Header />
             <Box backgroundImage={continent.images[1]} width="100%" height="500px" backgroundPosition="center" backgroundSize="cover">
