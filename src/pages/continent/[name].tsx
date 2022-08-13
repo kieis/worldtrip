@@ -1,6 +1,7 @@
-import { Box, Flex, GridItem, Heading, Img, SimpleGrid, Text, Tooltip } from "@chakra-ui/react";
+import { Box, Flex, GridItem, Heading, Img, ScaleFade, SimpleGrid, Text, Tooltip, useCounter } from "@chakra-ui/react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { api } from "../../services/api";
@@ -31,6 +32,17 @@ interface ContinentProps {
 }
 
 export default function Continent({ continent, mostVisitedCities }: ContinentProps) {
+    const [scrollTop, setScrollTop] = useState(0);
+
+    useEffect(() => {
+        const onScroll = e => {
+          setScrollTop(e.target.documentElement.scrollTop);
+        };
+        window.addEventListener("scroll", onScroll);
+
+        return () => window.removeEventListener("scroll", onScroll);
+    }, [scrollTop]);
+
     return(
         <>
         <Head>
@@ -53,10 +65,10 @@ export default function Continent({ continent, mostVisitedCities }: ContinentPro
                     <Text fontSize="24px" lineHeight="36px" fontWeight="600">línguas</Text>
                 </Flex>
                 <Flex flexDir="column" justifyContent="center" alignItems="center">
-                    <Text fontSize="48px" lineHeight="72px" fontWeight="600" color="highlight">{continent.countries.count}</Text>
+                    <Text fontSize="48px" lineHeight="72px" fontWeight="600" color="highlight">{mostVisitedCities.length}</Text>
                     <Flex gap="5px">
                         <Text fontSize="24px" lineHeight="36px" fontWeight="600">cidades +100</Text>
-                        <Tooltip hasArrow label={`Entre as 100 cidades mais visitas do mundo a ${continent.translatedName} possui ${continent.countries.count} delas.`} bg='dark.heading' color='white' padding="10px 10px">
+                        <Tooltip hasArrow label={`Entre as 100 cidades mais visitas do mundo a ${continent.translatedName} possui ${mostVisitedCities.length} delas.`} bg='dark.heading' color='white' padding="10px 10px">
                             <Img src="/images/Info.svg"/>
                         </Tooltip>
                     </Flex>
@@ -68,27 +80,29 @@ export default function Continent({ continent, mostVisitedCities }: ContinentPro
                     {
                         mostVisitedCities.map((city) => {
                             return (
-                                <GridItem key={city.name}>
-                                    <Flex height="280px" flexDir="column">
-                                        <Img src={`https://source.unsplash.com/random/280x173/?${city.name},city`} height="173px" borderRadius="4px 4px 0px 0px"/>
-                                        <Flex
-                                        justifyContent="space-between"
-                                        alignItems="center"
-                                        borderBottomRadius="4px" 
-                                        borderBottom="1px solid #FFBA08" 
-                                        borderLeft="1px solid #FFBA08" 
-                                        borderRight="1px solid #FFBA08" 
-                                        paddingInline="24px"
-                                        pt="18px"
-                                        pb="25px">
-                                            <Box>
-                                                <Heading fontSize="20px" lineHeight="25px">{city.name}</Heading>
-                                                <Text color="dark.info" pt="12px" fontSize="16px" lineHeight="26px">{city.country}</Text>
-                                            </Box>
-                                            <Img src={city.flag} width="30px" height="30px" borderRadius="100%" objectPosition="center" objectFit="cover"/>
+                                <ScaleFade delay={0.3} initialScale={0.6} in={scrollTop > 350} key={city.name}>
+                                    <GridItem >
+                                        <Flex height="280px" flexDir="column">
+                                            <Img src={`https://source.unsplash.com/random/280x173/?${city.name},city`} height="173px" borderRadius="4px 4px 0px 0px"/>
+                                            <Flex
+                                            justifyContent="space-between"
+                                            alignItems="center"
+                                            borderBottomRadius="4px" 
+                                            borderBottom="1px solid #FFBA08" 
+                                            borderLeft="1px solid #FFBA08" 
+                                            borderRight="1px solid #FFBA08" 
+                                            paddingInline="24px"
+                                            pt="18px"
+                                            pb="25px">
+                                                <Box>
+                                                    <Heading fontSize="20px" lineHeight="25px">{city.name}</Heading>
+                                                    <Text color="dark.info" pt="12px" fontSize="16px" lineHeight="26px">{city.country}</Text>
+                                                </Box>
+                                                <Img src={city.flag} width="30px" height="30px" borderRadius="100%" objectPosition="center" objectFit="cover"/>
+                                            </Flex>
                                         </Flex>
-                                    </Flex>
-                                </GridItem>
+                                    </GridItem>
+                                </ScaleFade>
                             )
                         })
                     }
